@@ -31,7 +31,7 @@ function addBookToLibrary() {
     const newBook = new Book(title.value, author.value, pages.value, readed.value);
 
     library.push(newBook);
-    //bookCreate();
+    bookCreate();
 }
 
 //Element creator based in input data
