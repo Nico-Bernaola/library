@@ -80,5 +80,4 @@ function clearInput () {
 
 function remove(index) {
     console.log(index)
-    index.remove()
 }
