@@ -16,29 +16,29 @@ const author = document.querySelector('.author');
 const readed = document.querySelector('.readed');
 const tableBody = document.querySelector('.tableBody')
 const form = document.querySelector('form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      addBookToLibrary();
-      clearInput();
+    e.preventDefault();
+    addBookToLibrary();
+    clearInput();
 })
 
 //Object creator
 function addBookToLibrary() {
-  if (title.value.length === 0 || author.value.length === 0 || pages.value.length === 0) {
-    alert("Please, fill all the fields");
-    return;
-  }
+    if (title.value.length === 0 || author.value.length === 0 || pages.value.length === 0) {
+        alert("Please, fill all the fields");
+        return;
+    }
 
-  const newBook = new Book(title.value, author.value, pages.value, readed.value);
+    const newBook = new Book(title.value, author.value, pages.value, readed.value);
 
-  library.push(newBook);
-  bookCreate();
+    library.push(newBook);
+    //bookCreate();
 }
 
 //Element creator based in input data
 function bookCreate() {
-  tableBody.innerHTML = "";
-  library.forEach((newBook, index) => {
-    const htmlBook = `
+    tableBody.innerHTML = "";
+    library.forEach((newBook, index) => {
+        const htmlBook = `
       <div class="tr">
         <tr>
           <div class="infoContainer">
@@ -68,17 +68,30 @@ function bookCreate() {
         </tr>
       </div>
       `;
-    tableBody.insertAdjacentHTML("afterbegin", htmlBook);
-  });
+        tableBody.insertAdjacentHTML("afterbegin", htmlBook);
+    });
 }
 
-function clearInput () {
-  title.value = "";
-  author.value = "";
-  pages.value = "";
+function clearInput() {
+    title.value = "";
+    author.value = "";
+    pages.value = "";
 }
 
-function remove(index) {
-    console.log(index)
-    index.remove()
+function remove(elemento) {
+
+    console.log(elemento.id);
+    let book = library.indexOf(elemento.id);
+
+    if (book !== undefined) {
+        library.splice(book, 1);
+        console.log(library);
+    }
+
+    bookCreate();
+
+}
+
+function editar(elemento) {
+
 }
