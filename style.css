@@ -170,7 +170,7 @@ body {
     font-family: 'Courier New', Courier, sans-serif;
 }
 
-.tableBody .tr .statusContainer .delete {
+.tableBody .tr .statusContainer .deleter {
     color: #fff;
     background: rgba(242, 148, 146, 0.466);
     border-radius: 3px;
@@ -185,6 +185,6 @@ body {
     font-family: 'Courier New', Courier, sans-serif;
 }
 
-.tableBody .tr .statusContainer .delete:hover {
+.tableBody .tr .statusContainer .deleter:hover {
     background: rgba(255, 4, 0, 0.678);
 }

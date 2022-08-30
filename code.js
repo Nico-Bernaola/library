@@ -8,7 +8,7 @@ function Book(title, author, pages, readed) {
     this.readed = readed;
 }
 
-//Elements
+//Element Targets
 const title = document.querySelector('.title');
 const pages = document.querySelector('.pages');
 const submit = document.querySelector('.submit');
@@ -18,6 +18,7 @@ const tableBody = document.querySelector('.tableBody')
 const form = document.querySelector('form').addEventListener('submit', (e) => {
       e.preventDefault();
       addBookToLibrary();
+      clearInput();
 })
 
 //Object creator
@@ -29,15 +30,14 @@ function addBookToLibrary() {
 
   const newBook = new Book(title.value, author.value, pages.value, readed.value);
 
-  console.log(newBook)
   library.push(newBook);
-  render();
+  bookCreate();
 }
 
 //Element creator based in input data
-function render() {
+function bookCreate() {
   tableBody.innerHTML = "";
-  library.forEach((newBook) => {
+  library.forEach((newBook, index) => {
     const htmlBook = `
       <div class="tr">
         <tr>
@@ -63,12 +63,22 @@ function render() {
           </div>
           <div class="statusContainer">
             <td><button class="statusButton">${newBook.readed}</button></td>
-            <td><button class="delete">delete</button></td>
+            <td><button id=${index} class="deleter" onclick="remove(this)">delete</button></td>
           </div>
         </tr>
       </div>
-      
       `;
     tableBody.insertAdjacentHTML("afterbegin", htmlBook);
   });
+}
+
+function clearInput () {
+  title.value = "";
+  author.value = "";
+  pages.value = "";
+}
+
+function remove(index) {
+    console.log(index)
+    index.remove()
 }
