@@ -62,7 +62,7 @@ function bookCreate() {
             </div>
           </div>
           <div class="statusContainer">
-            <td><button class="statusButton">${newBook.readed}</button></td>
+            <td><button id=${index} class="statusButton" onclick="changeStatus(this)">${newBook.readed}</button></td>
             <td><button id=${index} class="deleter" onclick="remove(this)">delete</button></td>
           </div>
         </tr>
@@ -70,6 +70,8 @@ function bookCreate() {
       `;
         tableBody.insertAdjacentHTML("afterbegin", htmlBook);
     });
+
+    
 }
 
 function clearInput() {
@@ -78,6 +80,7 @@ function clearInput() {
     pages.value = "";
 }
 
+//Removes the whole element when the remove button is clicked
 function remove(elemento) {
 
     console.log(elemento.id);
@@ -92,6 +95,16 @@ function remove(elemento) {
 
 }
 
-function editar(elemento) {
+//Read status toggle
+function changeStatus(elemento) {
 
+    console.log(elemento)
+    leido = "readed"
+    noLeido = "not readed"
+    
+    if(elemento.innerHTML == leido) {
+      elemento.innerHTML = noLeido;
+    } else {
+      elemento.innerHTML = leido;
+    }
 }
